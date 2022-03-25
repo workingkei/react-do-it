@@ -7,3 +7,5 @@ _여기 코드는 두잇! 리액트 프로그래밍 정석을 학습해본 소�
 ## 작동 데모 주소
 
 [comment]: <> (https://not-now.firebaseapp.com/)
+
+강의 소스 - https://github.com/justinpark/justin-do-it-react/blob/master/README.md
