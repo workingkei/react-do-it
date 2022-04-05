@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
-import Counter2 from './03/Counter2';
+import './sass/materialize.scss';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 1,
-    };
-  }
-  increaseCount() {
-    this.setState(({ count }) => ({ count: count + 1 }));
-  }
-
   render() {
     return (
       <div>
-        <Counter2 count={this.state.count} onAdd={this.increaseCount.bind(this)} />
+        <nav>
+          <div className="nav-wrapper">
+            <div>두잇! 리액트 시작하기</div>
+          </div>
+        </nav>
+        <h1>머터리얼 css</h1>
       </div>
     );
   }
