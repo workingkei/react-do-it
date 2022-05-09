@@ -1,17 +1,17 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const { Provider, Consumer } = React.createContext({});
 
-class FormProvider extends PureComponent {
+class FormProvider extends React.PureComponent {
   static Consumer = Consumer;
-
   static getDerivedStateFromProps({ initValues }, prevState) {
     const values = initValues !== prevState.initValues ? initValues : prevState.values;
+
     return {
       initValues,
       values,
-      error: {},
+      errors: {},
     };
   }
 
@@ -33,13 +33,15 @@ class FormProvider extends PureComponent {
   }
 
   onChange(name, updatedValue) {
-    this.validate(this.state.values);
-    this.setState(({ values }) => ({
-      values: {
-        ...values,
-        [name]: updatedValue,
-      },
-    }));
+    this.setState(
+      ({ values }) => ({
+        values: {
+          ...values,
+          [name]: updatedValue,
+        },
+      }),
+      () => this.validate(this.state.values),
+    );
   }
 
   reset() {
@@ -52,14 +54,23 @@ class FormProvider extends PureComponent {
       return;
     }
     const errors = this.props.validate(values);
-    this.setState({ errors });
+    this.setState({
+      errors,
+    });
   }
 
   render() {
     const { values, errors } = this.state;
     return (
-      <Provider value={{ errors, values, onChange: this.onChange, reset: this.reset }}>
-        <form onChange={this.handleSubmit}>{this.props.children}</form>
+      <Provider
+        value={{
+          errors,
+          values,
+          onChange: this.onChange,
+          reset: this.reset,
+        }}
+      >
+        <form onSubmit={this.handleSubmit}>{this.props.children}</form>
       </Provider>
     );
   }
