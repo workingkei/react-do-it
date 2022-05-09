@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-const { Provider, Consumer } = React.careateContext({});
+const { Provider, Consumer } = React.createContext({});
 
 class FormProvider extends PureComponent {
   static Consumer = Consumer;
@@ -47,8 +47,8 @@ class FormProvider extends PureComponent {
   }
 
   validate(values) {
-    const { validat } = this.props;
-    if (!this.validate()) {
+    const { validate } = this.props;
+    if (!validate) {
       return;
     }
     const errors = this.props.validate(values);
