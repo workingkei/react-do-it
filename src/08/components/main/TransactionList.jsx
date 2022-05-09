@@ -6,26 +6,12 @@ import TransactionTable from './TransactionTable';
 import Api from '../../Api';
 
 class TransactionList extends PureComponent {
-  state = {
-    transactions: [
-      // {
-      //   id: 'btx_01',
-      //   name: '비트코인(BTX)',
-      //   totalPrice: '123,123,000,000원',
-      //   currentPrice: '4,200,000원',
-      //   datetime: '2019/01/20 08:23:22',
-      // },
-    ],
-  };
-
   componentDidMount() {
-    Api.get('/transactions', { params: { code: 'BTX' } }).then((response) =>
-      this.setState({ transactions: response.data }),
-    );
+    Api.get('/transactions').then(({ data }) => this.props.setTransactionList(data));
   }
 
   render() {
-    const { transactions } = this.state;
+    const { transactions } = this.props;
     return (
       <div>
         <Heading level={3}>거래 현황</Heading>
@@ -39,5 +25,10 @@ class TransactionList extends PureComponent {
     );
   }
 }
+
+TransactionList.defaultProps = {
+  transactions: [],
+  setTransactionList: () => {},
+};
 
 export default TransactionList;
