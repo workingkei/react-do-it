@@ -3,12 +3,13 @@ import Heading from '../../../doit-ui/Heading';
 import Card from '../../../doit-ui/Card';
 // import TransactionSearchFilter from './TransactionSearchFilter';
 import TransactionTable from './TransactionTable';
-import Api from '../../Api';
+// import Api from '../../Api';
 import TransactionSearchFilterContainer from '../../container/main/TransactionSearchFilterContainer';
 
 class TransactionList extends PureComponent {
   componentDidMount() {
-    Api.get('/transactions').then(({ data }) => this.props.setTransactionList(data));
+    // Api.get('/transactions').then(({ data }) => this.props.setTransactionList(data));
+    this.props.requestTransactionList();
   }
 
   render() {
@@ -30,7 +31,8 @@ class TransactionList extends PureComponent {
 
 TransactionList.defaultProps = {
   transactions: [],
-  setTransactionList: () => {},
+  // setTransactionList: () => {},
+  requestTransactionList: () => {},
 };
 
 export default TransactionList;

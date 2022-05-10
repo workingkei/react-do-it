@@ -2,6 +2,7 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import reducers from '../reducers';
 // import { SET_TRANSACTION_LIST } from '../actions/transactionActions';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 // const customMiddleware = (store) => (nextRunner) => (action) => {
 //   console.log('액션 객체', action);
@@ -10,21 +11,21 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 //   console.log('리듀서 실행 후', store.getState());
 //   return result;
 // };
-const customMiddleware = (store) => (nextRunner) => (action) => {
-  console.log('미들웨어에 전달된 액션 객체', action);
-  console.log('리듀서 실행 전', store.getState());
-  const result = nextRunner(action);
-  console.log('리듀서 실행 후', store.getState());
-  return result;
-};
-
-const customMiddleware2 = (store) => (nextRunner) => (action) => {
-  console.log('미들웨어2에 전달된 액션 객체', action);
-  console.log('미들웨어2 실행 전', store.getState());
-  const result = nextRunner(action);
-  console.log('미들웨어2 실행 후', store.getState());
-  return result;
-};
+// const customMiddleware = (store) => (nextRunner) => (action) => {
+//   console.log('미들웨어에 전달된 액션 객체', action);
+//   console.log('리듀서 실행 전', store.getState());
+//   const result = nextRunner(action);
+//   console.log('리듀서 실행 후', store.getState());
+//   return result;
+// };
+//
+// const customMiddleware2 = (store) => (nextRunner) => (action) => {
+//   console.log('미들웨어2에 전달된 액션 객체', action);
+//   console.log('미들웨어2 실행 전', store.getState());
+//   const result = nextRunner(action);
+//   console.log('미들웨어2 실행 후', store.getState());
+//   return result;
+// };
 
 // const customMiddleware1 = () => (nextRunner) => (action) => {
 //   if (action.type === SET_TRANSACTION_LIST) {
@@ -49,5 +50,6 @@ export default (initStates) =>
   createStore(
     combineReducers(reducers),
     initStates,
-    composeWithDevTools(applyMiddleware(customMiddleware, customMiddleware2)),
+    composeWithDevTools(applyMiddleware(thunk)),
+    // composeWithDevTools(applyMiddleware(customMiddleware, customMiddleware2)),
   );
