@@ -37,3 +37,20 @@ export function setError(errorMessage) {
     payload: { errorMessage },
   };
 }
+
+export const TRADE_COMPLETE = 'transaction/TRADE_COMPLETE';
+
+export function tradeComplete() {
+  return { type: TRADE_COMPLETE };
+}
+
+export function createTransaction(data, onComplete) {
+  return (dispatch) =>
+    Api.post('/transactions', data).then(
+      ({ data }) => {
+        dispatch(tradeComplete());
+        onComplete();
+      },
+      (error) => dispatch(setError(error.response.data.errorMessage)),
+    );
+}

@@ -4,6 +4,7 @@ import reducers from '../reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import notificationEffects from '../middlewares/notificationEffects';
+import transactionEffect from '../middlewares/transactionEffect';
 
 // const customMiddleware = (store) => (nextRunner) => (action) => {
 //   console.log('액션 객체', action);
@@ -51,6 +52,6 @@ export default (initStates) =>
   createStore(
     combineReducers(reducers),
     initStates,
-    composeWithDevTools(applyMiddleware(thunk, notificationEffects)),
+    composeWithDevTools(applyMiddleware(thunk, notificationEffects, transactionEffect)),
     // composeWithDevTools(applyMiddleware(customMiddleware, customMiddleware2)),
   );

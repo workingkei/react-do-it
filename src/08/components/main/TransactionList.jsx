@@ -18,7 +18,6 @@ class TransactionList extends PureComponent {
       <div>
         <Heading level={3}>거래 현황</Heading>
         <Card vertical={4} horizontal={4}>
-          {/*<TransactionSearchFilter />*/}
           <TransactionSearchFilterContainer />
         </Card>
         <Card>

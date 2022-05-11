@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Table from '../../../doit-ui/Table';
-import TableHead from '../../../doit-ui/TableHead';
 import TableRow from '../../../doit-ui/TableRow';
 import TableCell from '../../../doit-ui/TableCell';
+import TableHead from '../../../doit-ui/TableHead';
 import TableBody from '../../../doit-ui/TableBody';
 import Text from '../../../doit-ui/Text';
 import Spacing from '../../../doit-ui/Spacing';
@@ -14,7 +14,6 @@ const LoadingMessage = (
     <Text large>데이터를 불러들이고 있습니다.</Text>
   </Spacing>
 );
-
 class TransactionTable extends PureComponent {
   render() {
     const { transactions } = this.props;
@@ -44,13 +43,15 @@ class TransactionTable extends PureComponent {
 }
 
 TransactionTable.propTypes = {
-  transactions: PropTypes.shape({
-    id: PropTypes.string,
-    name: PropTypes.string,
-    totalPrice: PropTypes.string,
-    currentPrice: PropTypes.string,
-    datetime: PropTypes.string,
-  }),
+  transactions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      totalPrice: PropTypes.number,
+      currentPrice: PropTypes.number,
+      datetime: PropTypes.string,
+    }),
+  ),
 };
 
 export default withLoading(LoadingMessage)(TransactionTable);
