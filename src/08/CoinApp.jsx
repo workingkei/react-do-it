@@ -4,7 +4,8 @@ import AppLayout from './components/AppLayout';
 import MainPage from './components/main/MainPage';
 import configureStore from './store/configureStore';
 import ModalProvider from './ModalProvider';
-import NotificationContainer from './container/main/NotificationContainer';
+import NotificationContainer from './container/NotificationContainer';
+// import NotificationContainer from './container/main/NotificationContainer';
 
 class CoinApp extends PureComponent {
   store = configureStore();
