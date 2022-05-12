@@ -7,18 +7,26 @@ import ModalProvider from './ModalProvider';
 import NotificationContainer from './container/NotificationContainer';
 // import NotificationContainer from './container/main/NotificationContainer';
 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NotFound from './components/NotFound';
+
 class CoinApp extends PureComponent {
   store = configureStore();
 
   render() {
     return (
       <Provider store={this.store}>
-        <ModalProvider>
-          <AppLayout>
-            <MainPage />
-            <NotificationContainer />
-          </AppLayout>
-        </ModalProvider>
+        <Router>
+          <ModalProvider>
+            <AppLayout>
+              <Switch>
+                <Route path="/" exact render={() => <MainPage />} />
+                <Route path="*" component={NotFound} />
+              </Switch>
+              <NotificationContainer />
+            </AppLayout>
+          </ModalProvider>
+        </Router>
       </Provider>
     );
   }
