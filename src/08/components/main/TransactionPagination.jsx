@@ -40,7 +40,7 @@ class TransactionPagination extends PureComponent {
 TransactionPagination.propTypes = {
   hasNext: PropTypes.bool,
   pageNumber: PropTypes.number,
-  loading: PropTypes.bool,
+  // loading: PropTypes.bool,
   requestTransactionList: PropTypes.func.isRequired,
 };
 
