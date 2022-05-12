@@ -38,7 +38,7 @@ export default (resourceName, key = 'id') => ({
       resourceName,
     },
   }),
-  resett: () => ({
+  reset: () => ({
     type: RESET,
     meta: { resourceName },
   }),

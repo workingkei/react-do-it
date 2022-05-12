@@ -6,10 +6,6 @@ import TransactionSearchFilterContainer from '../../container/main/TransactionSe
 import TransactionPaginationContainer from '../../container/main/TransactionPaginationContainer';
 
 class TransactionList extends PureComponent {
-  componentDidMount() {
-    this.props.requestTransactionList();
-  }
-
   render() {
     const { transactions, loading } = this.props;
     return (
