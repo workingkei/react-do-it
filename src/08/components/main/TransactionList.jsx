@@ -1,14 +1,12 @@
 import React, { PureComponent } from 'react';
 import Heading from '../../../doit-ui/Heading';
 import Card from '../../../doit-ui/Card';
-// import TransactionSearchFilter from './TransactionSearchFilter';
 import TransactionTable from './TransactionTable';
-// import Api from '../../Api';
 import TransactionSearchFilterContainer from '../../container/main/TransactionSearchFilterContainer';
+import TransactionPaginationContainer from '../../container/main/TransactionPaginationContainer';
 
 class TransactionList extends PureComponent {
   componentDidMount() {
-    // Api.get('/transactions').then(({ data }) => this.props.setTransactionList(data));
     this.props.requestTransactionList();
   }
 
@@ -23,6 +21,7 @@ class TransactionList extends PureComponent {
         <Card>
           <TransactionTable transactions={transactions} isLoading={loading} />
         </Card>
+        <TransactionPaginationContainer />
       </div>
     );
   }
@@ -30,7 +29,6 @@ class TransactionList extends PureComponent {
 
 TransactionList.defaultProps = {
   transactions: [],
-  // setTransactionList: () => {},
   requestTransactionList: () => {},
 };
 

@@ -26,7 +26,7 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "mockserver": "json-server --watch --delay 500 --port 4000 mock/db.json",
+    "mockserver": "json-server --watch --delay 500 --port 4000 mock/create.js",
     "errorserver": "node mock/fake.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
